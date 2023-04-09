@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bb-service
+spec:
+  type: NodePort
+  selector:
+    app: bb-app
+  ports:
+    - nodePort: 31000
+      protocol: TCP
+      port: 4040
