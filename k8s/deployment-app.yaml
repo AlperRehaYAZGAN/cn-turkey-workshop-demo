@@ -20,7 +20,7 @@ spec:
             - containerPort: 4040
           env:
             - name: REDIS_URL
-              value: bb-cache
+              value: "bb-cache:6379"
             - name: APP_PORT
               value: "4040"
             - name: REDIS_PASSWORD
