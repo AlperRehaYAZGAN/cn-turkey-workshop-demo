@@ -1,8 +1,13 @@
-project: default
-source:
-  repoURL: 'https://github.com/AlperRehaYAZGAN/cn-turkey-workshop-demo.git'
-  path: ./k8s
-  targetRevision: HEAD
-destination:
-  server: 'https://kubernetes.default.svc'
-  namespace: default
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: 'cn-turkey-bb-demo'
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/AlperRehaYAZGAN/cn-turkey-workshop-demo.git'
+    path: ./k8s
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
