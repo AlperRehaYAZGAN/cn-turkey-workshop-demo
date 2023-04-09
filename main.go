@@ -15,9 +15,11 @@ func main() {
 	// get redis url and password from env
 	redisURL := os.Getenv("REDIS_URL")
 	redisPassword := os.Getenv("REDIS_PASSWORD")
-	if redisURL == "" || redisPassword == "" {
-		fmt.Println("REDIS_URL or REDIS_PASSWORD is not set")
+	appPort := os.Getenv("APP_PORT")
+	if redisURL == "" || redisPassword == "" || appPort == "" {
+		fmt.Println("REDIS_URL or REDIS_PASSWORD or APP_PORT is not set")
 	}
+	fmt.Printf("App is starting with redis url: %s and password: %s and http port on %s", redisURL, redisPassword, appPort)
 
 	// connects redis
 	rContext := context.Background()
@@ -30,13 +32,13 @@ func main() {
 	// checks if redis is connected
 	_, err := rdb.Ping(rContext).Result()
 	if err != nil {
-		fmt.Println("Redis is not connected")
+		fmt.Printf("error: unable to ping redis with initial connection: %v", err)
 	}
 
 	// create counter
 	err = rdb.Set(rContext, "counter", 0, 0).Err()
 	if err != nil {
-		fmt.Println("Counter is not created")
+		fmt.Printf("error: unable to set counter to 0: %v", err)
 	}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -51,5 +53,7 @@ func main() {
 		}
 	})
 
-	http.ListenAndServe(":4040", nil)
+	// start server
+	fmt.Println("Server is starting on port " + appPort)
+	http.ListenAndServe(":"+appPort, nil)
 }
