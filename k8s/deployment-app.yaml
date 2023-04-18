@@ -31,7 +31,11 @@ spec:
                 secretKeyRef:
                   name: bb-cache-secret
                   key: REDIS_PASSWORD
-          # configmap for /app/templates/index.html
+          # add configmap "bb-configmap-index" to "/app/templates" folder
           volumeMounts:
-            - name: bb-configmap-index
+            - name: custom-index
               mountPath: /app/templates
+          volumes:
+          - name: custom-index
+            configMap:
+              name: bb-configmap-index
