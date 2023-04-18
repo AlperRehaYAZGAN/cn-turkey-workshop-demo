@@ -33,5 +33,5 @@ spec:
                   key: REDIS_PASSWORD
           # configmap for /app/templates/index.html
           volumeMounts:
-            - name: bb-configmap
+            - name: bb-configmap-index
               mountPath: /app/templates

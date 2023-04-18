@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: bb-configmap
+  name: bb-configmap-index
 data:
   index.html: |
     <!DOCTYPE html>
