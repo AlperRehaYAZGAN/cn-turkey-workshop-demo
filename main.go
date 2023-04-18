@@ -1,6 +1,5 @@
 package main
 
-// simple webservice that returns hello world
 import (
 	"context"
 	"fmt"
@@ -46,7 +45,7 @@ func main() {
 
 	// http handler
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		// increment counter and return render result of t index.html with "Counter"
+		// increment counter, render index.html with "Counter"
 		counter, _ := rdb.Incr(rContext, "counter").Result()
 		t.Execute(w, map[string]interface{}{
 			"Counter": counter,
