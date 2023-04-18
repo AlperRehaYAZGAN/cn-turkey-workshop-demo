@@ -1,0 +1,11 @@
+# simple only redis alpine docker-compose yaml
+version: '3.3'
+
+services:
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: always
+    ports:
+      - 6379:6379
+    command: redis-server --requirepass 1020304050

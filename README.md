@@ -4,6 +4,16 @@
 
 This is a simple Golang application that is used for demo purposes in Cloud Native Turkey live session.  
 
+### Development  
+
+```bash
+# prepare local environment
+docker-compose up -d
+
+# run
+go run .
+```
+
 
 ### Build  
 ```bash

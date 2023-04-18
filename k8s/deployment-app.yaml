@@ -19,9 +19,19 @@ spec:
           ports:
             - containerPort: 4040
           env:
-            - name: REDIS_URL
-              value: "bb-cache:6379"
             - name: APP_PORT
               value: "4040"
+            - name: REDIS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: bb-cache-secret
+                  key: REDIS_URL
             - name: REDIS_PASSWORD
-              value: "1020304050"
+              valueFrom:
+                secretKeyRef:
+                  name: bb-cache-secret
+                  key: REDIS_PASSWORD
+          # # configmap for /app/templates/index.html
+          # volumeMounts:
+          #   - name: bb-configmap
+          #     mountPath: /app/templates

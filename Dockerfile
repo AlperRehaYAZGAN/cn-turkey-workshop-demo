@@ -18,6 +18,7 @@ FROM alpine
 WORKDIR /app
 
 # copy necessary files from build stage
+COPY --from=build-env /src/templates /app/templates
 COPY --from=build-env /src/main /app/
 
 # create user and give it permissions
