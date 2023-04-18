@@ -35,7 +35,7 @@ spec:
           volumeMounts:
             - name: custom-index
               mountPath: /app/templates
-          volumes:
-          - name: custom-index
-            configMap:
-              name: bb-configmap-index
+      volumes:
+        - name: custom-index
+          configMap:
+            name: bb-configmap-index
