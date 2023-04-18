@@ -31,7 +31,7 @@ spec:
                 secretKeyRef:
                   name: bb-cache-secret
                   key: REDIS_PASSWORD
-          # # configmap for /app/templates/index.html
-          # volumeMounts:
-          #   - name: bb-configmap
-          #     mountPath: /app/templates
+          # configmap for /app/templates/index.html
+          volumeMounts:
+            - name: bb-configmap
+              mountPath: /app/templates
